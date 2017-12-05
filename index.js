@@ -27,7 +27,7 @@ author:"Albert Einstein"
 author:"Michelangelo"
 },
 
-{quote:"When one door of happiness closes, another opens; but often we look so long at the closed door that we do not see the one which has been opened for us.",
+{quote:"When one door of happiness closes, another opens, but often we look so long at the closed door that we do not see the one which has been opened for us.",
 author:"Helen Keller"
 },
 
@@ -41,20 +41,32 @@ author:"Bob Marley"
 ];
 
 var number;
+var current_quote;
+var current_quote_author;
 
+window.onload = function() {
+	GenerateQuote();	
+	
+}
 function GenerateQuote(){
 	 number = Math.floor(Math.random() * 10);
-	 document.getElementById("quotetext").innerHTML = quotes[number].quote;
-	 document.getElementById("author").innerHTML = quotes[number].author;
+	 current_quote = quotes[number].quote;
+	 current_quote_author = quotes[number].author;
+	 document.getElementById("quotetext").innerHTML = current_quote;
+	 document.getElementById("author").innerHTML = current_quote_author;
 }
 
 
-function tweet(){
-	number = Math.floor(Math.random() * 10);
-	window.open("https://twitter.com/intent/tweet?text="+ quotes[number].quote);
-};
+//function tweet(){
 
-
-
+//	var share = quotes[number].quote;
+//	var url = window.open("https://twitter.com/intent/tweet?text="+ encodeURI(share) + "&url=&original-referer=");
+//};
+function tweet() {
+	var combine = (current_quote + "\n" + current_quote_author);
+	window.open("https://twitter.com/intent/tweet?text=" + combine);
+	console.log(quotes[number].quote);
+	console.log(quotes[number].author);
+}
 
 
